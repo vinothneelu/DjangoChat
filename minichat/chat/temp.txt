@@ -1,0 +1,48 @@
+# class CreateCategory(graphene.Mutation):
+#     class Arguments:
+#         # Mutation to create a category
+#         title = graphene.String(required=True)
+
+#      # Class attributes define the response of the mutation
+#     category = graphene.Field(CategoryType)
+
+#     @classmethod
+#     def mutate(cls, root, info, title):
+#         category = Category()
+#         category.title = title
+#         category.save()
+        
+#         return CreateCategory(category=category)
+
+
+# class UpdateCategory(graphene.Mutation):
+#     class Arguments:
+#         id = graphene.ID()
+#         title = graphene.String(required=True)
+
+#     category = graphene.Field(CategoryType)
+
+
+#     @classmethod
+#     def mutate(cls, root, info, id, **update_data):
+#         category = Category.objects.filter(id=id)
+#         if category:
+#             params = update_data
+#             category.update(**{k: v for k, v in params.items() if params[k]})
+#             return UpdateCategory(category=category.first())
+#         else:
+#             print("Failed")
+
+
+# class DeleteCategory(graphene.Mutation):
+#     class Arguments:
+#         id = graphene.ID()
+
+#     category = graphene.Field(CategoryType)
+
+
+#     @classmethod
+#     def mutate(cls, root, info, id):
+#         category = Category.objects.get(id=id)
+#         category.delete()
+#         return DeleteCategory(category)
